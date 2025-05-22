@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+# 0) Set your input/output directories:
+INPUT_DIR="/Users/tenanyehaglund/downloads/D142-445660387/BCL_Convert_03_26_2025_14_30_56-813607797/FASTQ/Original_FASTQ"
+OUTPUT_DIR="$PWD/trimmed_fastq"
 
 # Set adapter sequence, quality threshold, and minimum length
 ADAPTER="AGATCGGAAGAGC"
@@ -6,7 +11,7 @@ QUALITY=25
 MIN_LENGTH=50
 
 # Loop through all R1 files and process each paired-end sample
-for R1 in CS_Lib*_R1_001.fastq.gz; do
+for r1 in "$INPUT_DIR"/CS_Lib_Day*_R1_001.fastq.gz; do
     # Derive the matching R2 filename by replacing _R1_ with _R2_
     R2="${R1/_R1_/_R2_}"
 
